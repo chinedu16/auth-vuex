@@ -2,7 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/login">Login</router-link>
     </div>
     <router-view/>
   </div>
@@ -25,5 +26,24 @@
       color: #42b983;
     }
   }
+}
+
+input {
+  height: 30px;
+  width: 250px;
+  border-radius: 5px;
+  padding-left: 10px;
+  border: 1px solid #42b983;
+  margin-left: 10px;
+}
+
+button {
+  height: 30px;
+  width: auto;
+  color: white;
+  font-weight: 900;
+  border-radius: 5px;
+  background: #42b983;
+  border: 1px solid #42b983;
 }
 </style>
