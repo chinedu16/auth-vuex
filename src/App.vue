@@ -3,11 +3,37 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <router-link to="/login">Login</router-link>
+      <router-link to="/login">Login</router-link> |
+      <a @click="logout" style="cursor: pointer">Logout</a>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+import axios from 'axios'
+export default {
+  data(){
+    return {
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout')
+      .then(() => this.$router.push('/'))
+    }
+  },
+  created: function () {
+    axios.interceptors.response.use(undefined, function (err) {
+      if (err.status === 401 && err.config && !err.config.__isRetryRequest) {
+        this.$store.dispatch('logout')
+      }
+      throw err;
+    });
+  }
+}
+</script>
+
 
 <style lang="scss">
 #app {
