@@ -44,5 +44,16 @@ export default new Vuex.Store({
         console.table(error.data)
       })
     },
+    logout({commit}){
+      console.log('wejwejjw')
+      commit('logout')
+      localStorage.removeItem('token')
+      delete axios.defaults.headers.common['Authorization']
+    }
+  },
+
+  getters : {
+    isAuthenticated: state => !!state.token,
+    authStatus: state => state.status,
   }
 })
