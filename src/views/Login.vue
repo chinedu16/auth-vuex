@@ -12,7 +12,7 @@
         <input required type="password" v-model="password" placeholder="password">    
       </div>
       <div class="form-control">
-        <button type="submit"> Login</button>
+        <button type="submit" @click="Login"> Login</button>
       </div>
       
       
@@ -24,8 +24,19 @@
 export default {
   data() {
     return {
-      email: '',
-      password: ''
+      email: 'eve.holt@reqres.in',
+      password: 'cityslicka'
+    }
+  },
+  methods : {
+    Login () {
+      let user = {
+        email: this.email,
+        password: this.password
+      }
+      this.$store.dispatch('login', user)
+      .then(() => this.$router.push('/about'))
+      .catch(err => console.table(err))
     }
   }
 }
