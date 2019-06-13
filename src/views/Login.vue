@@ -5,11 +5,11 @@
     <div class="form">
       <div class="form-control">
         <label for="">Email  </label>
-        <input required type="email" placeholder="chinedu.ohagwu@gmail.com">    
+        <input required type="email" v-model="email" placeholder="chinedu.ohagwu@gmail.com">    
       </div>
       <div class="form-control">
         <label for="">Password  </label>
-        <input required type="password" placeholder="password">    
+        <input required type="password" v-model="password" placeholder="password">    
       </div>
       <div class="form-control">
         <button type="submit"> Login</button>
@@ -19,6 +19,18 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  }
+}
+</script>
+
 
 <style>
 .form-control {
