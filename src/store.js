@@ -44,6 +44,21 @@ export default new Vuex.Store({
         console.table(error.data)
       })
     },
+    register: ({commit}, payload) => {
+      commit('auth_request')
+      axios({url: 'https://reqres.in/api/register', data: payload, method: 'POST'})
+      .then( response => {
+        const token = response.data.token
+        localStorage.setItem('token', token)
+        axios.defaults.headers.common['Authorization'] = token
+        commit('auth_success', token, payload)
+      })
+      .catch(error => {
+        commit('auth_error')
+        localStorage.removeItem('token')
+        console.table(error.data)
+      })
+    },
     logout({commit}){
       console.log('wejwejjw')
       commit('logout')
